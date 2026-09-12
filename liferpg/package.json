@@ -5,7 +5,7 @@
   "description": "Ledger & Blade — a tavern quest-board RPG for your real life.",
   "scripts": {
     "dev": "next dev",
-    "build": "prisma db push &amp;&amp; next build",
+    "build": "prisma generate --schema=prisma/schema.prisma &amp;&amp; prisma db push --schema=prisma/schema.prisma &amp;&amp; next build",
     "start": "next start",
     "lint": "next lint",
   },
