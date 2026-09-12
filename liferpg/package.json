@@ -8,8 +8,6 @@
     "build": "prisma db push &amp;&amp; next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "tsx prisma/seed.ts",
-    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.20.0",
