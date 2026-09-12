@@ -1,0 +1,97 @@
+// Ledger & Blade — database schema
+// Run `npx prisma db push` (or migrate) after setting DATABASE_URL.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Category {
+  INTELLECT
+  STRENGTH
+  DISCIPLINE
+  AGILITY
+  WISDOM
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+  BOSS
+}
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  passwordHash  String
+  name          String
+  createdAt     DateTime @default(now())
+
+  // Character sheet
+  level         Int      @default(1)
+  currentXp     Int      @default(0)
+  gold          Int      @default(50)
+
+  // Attributes (RPG stats), each grows independently
+  intellect     Int      @default(0)
+  strength      Int      @default(0)
+  discipline    Int      @default(0)
+  agility       Int      @default(0)
+  wisdom        Int      @default(0)
+
+  // Streak tracking
+  streakCount   Int      @default(0)
+  longestStreak Int      @default(0)
+  lastActiveOn  DateTime?
+
+  quests        Quest[]
+  purchases     Purchase[]
+}
+
+model Quest {
+  id          String     @id @default(cuid())
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  title       String
+  notes       String?
+  category    Category   @default(DISCIPLINE)
+  difficulty  Difficulty @default(EASY)
+
+  xpReward    Int
+  goldReward  Int
+
+  status      String     @default("pending") // pending | completed
+  dueDate     DateTime?
+  completedAt DateTime?
+  createdAt   DateTime   @default(now())
+
+  @@index([userId, status])
+}
+
+model ShopItem {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  icon        String
+  cost        Int
+  category    String   // theme | badge | trinket
+
+  purchases   Purchase[]
+}
+
+model Purchase {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  itemId     String
+  item       ShopItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  purchasedAt DateTime @default(now())
+
+  @@unique([userId, itemId])
+}

@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-ink-900 text-parchment-200 font-body antialiased;
+  background-image: radial-gradient(circle at 20% -10%, rgba(201, 162, 39, 0.08), transparent 45%),
+    radial-gradient(circle at 100% 10%, rgba(166, 50, 30, 0.08), transparent 40%);
+}
+
+/* Visible focus ring everywhere, for keyboard navigation */
+:focus-visible {
+  outline: 2px solid theme("colors.brass.light");
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.ledger-card {
+  @apply bg-parchment-200 text-ink-900 rounded-sm border border-brass-dark/40 shadow-card;
+}
+
+.torn-edge {
+  clip-path: polygon(0% 2%, 3% 0%, 8% 1.5%, 14% 0%, 20% 1%, 27% 0%, 34% 1.5%, 41% 0%, 48% 1%, 55% 0%, 62% 1.5%, 69% 0%, 76% 1%, 83% 0%, 90% 1.5%, 97% 0%, 100% 2%, 100% 98%, 97% 100%, 90% 98.5%, 83% 100%, 76% 99%, 69% 100%, 62% 98.5%, 55% 100%, 48% 99%, 41% 100%, 34% 98.5%, 27% 100%, 20% 99%, 14% 100%, 8% 98.5%, 3% 100%, 0% 98%);
+}
+
+.scrollbar-thin::-webkit-scrollbar { width: 8px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: theme("colors.brass.dark"); border-radius: 4px; }
+.scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
