@@ -1,1 +1,38 @@
-{ "name": "ledger-and-blade", "version": "1.0.0", "private": true, "description": "Ledger &amp; Blade — a tavern quest-board RPG for your real life.", "scripts": { "dev": "next dev", "build": "prisma generate --schema=prisma/schema.prisma &amp;&amp; prisma db push --schema=prisma/schema.prisma &amp;&amp; next build", "start": "next start", "lint": "next lint" }, "dependencies": { "@prisma/client": "^5.20.0", "bcryptjs": "^2.4.3", "canvas-confetti": "^1.9.3", "clsx": "^2.1.1", "framer-motion": "^11.5.6", "next": "^14.2.35", "next-auth": "^4.24.7", "react": "^18.3.1", "react-dom": "^18.3.1", "tailwind-merge": "^2.5.2", "zod": "^3.23.8" }, "devDependencies": { "@types/bcryptjs": "^2.4.6", "@types/canvas-confetti": "^1.6.4", "@types/node": "^20.14.15", "@types/react": "^18.3.5", "@types/react-dom": "^18.3.0", "autoprefixer": "^10.4.20", "postcss": "^8.4.45", "prisma": "^5.20.0", "tailwindcss": "^3.4.10", "tsx": "^4.19.1", "typescript": "^5.5.4" } }
+{
+  "name": "ledger-and-blade",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ledger & Blade — a tavern quest-board RPG for your real life.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "prisma generate --schema=prisma/schema.prisma && prisma db push --schema=prisma/schema.prisma && next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.20.0",
+    "bcryptjs": "^2.4.3",
+    "canvas-confetti": "^1.9.3",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.5.6",
+    "next": "^14.2.35",
+    "next-auth": "^4.24.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.5.2",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/canvas-confetti": "^1.6.4",
+    "@types/node": "^20.14.15",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.45",
+    "prisma": "^5.20.0",
+    "tailwindcss": "^3.4.10",
+    "tsx": "^4.19.1",
+    "typescript": "^5.5.4"
+  }
+}
