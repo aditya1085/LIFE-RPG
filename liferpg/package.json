@@ -2,11 +2,11 @@
   "name": "ledger-and-blade",
   "version": "1.0.0",
   "private": true,
-  "description": "Ledger & Blade — a tavern quest-board RPG for your real life.",
+  "description": "Ledger &amp; Blade — a tavern quest-board RPG for your real life.",
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate --schema=prisma/schema.prisma && prisma db push --schema=prisma/schema.prisma && next build",
-    "start": "next start",
+    "build": "DATABASE_URL=${DATABASE_URL:-postgresql://postgres:postgres@localhost:5432/db} prisma generate --schema=prisma/schema.prisma &amp;&amp; next build",
+    "start": "prisma db push --schema=prisma/schema.prisma &amp;&amp; next start",
     "lint": "next lint"
   },
   "dependencies": {
